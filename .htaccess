@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+# Memproteksi direktori pada aplikasi 
+Options All -Indexes
+
+# Menonaktifkan pengalihan (redirect) untuk file PHP
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ - [L]
+</IfModule>
