@@ -234,7 +234,7 @@ $cnt_inactive_rak = max(0, $cnt_total_rak - $cnt_active_rak);
           <tbody>
             <?php
             $filter_status = isset($_GET['filter_status']) ? $_GET['filter_status'] : 'all';
-            $sql_query = "SELECT id, no_rak, status FROM location ORDER BY CAST(SUBSTRING(no_rak, 3) AS UNSIGNED) ASC, no_rak ASC";
+            $sql_query = "SELECT id, no_rak, status FROM location ORDER BY no_rak ASC";
             $query = mysqli_query($mysqli, $sql_query) or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
 
             $generator = null;

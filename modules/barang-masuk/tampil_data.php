@@ -309,7 +309,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
                           <?php endif; ?>
                         </td>
                         <td class="text-center align-middle">
-                          <span class="badge badge-secondary"><?= htmlspecialchars($r_det['no_rak'] ?: 'A-001') ?></span>
+                          <span class="badge badge-secondary"><?= htmlspecialchars($r_det['no_rak'] ?: 'JKT-01-01-A') ?></span>
                         </td>
                       </tr>
                   <?php 

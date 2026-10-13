@@ -15,6 +15,7 @@ protectProcessScript(['Super Admin', 'Administrator'], 'cabang');
     // mengecek data hasil submit dari form
     if (isset($_POST['simpan'])) {
         // ambil data hasil submit dari form
+        $kode_cabang = strtoupper(mysqli_real_escape_string($mysqli, trim($_POST['kode_cabang'] ?? '')));
         $nama_cabang = mysqli_real_escape_string($mysqli, trim($_POST['nama_cabang']));
         $alamat = mysqli_real_escape_string($mysqli, trim($_POST['alamat'] ?? ''));
         $nama_fm = mysqli_real_escape_string($mysqli, trim($_POST['nama_fm']));
@@ -37,8 +38,8 @@ protectProcessScript(['Super Admin', 'Administrator'], 'cabang');
         // jika "nama_cabang" belum ada di tabel "tbl_cabang"
         else {
             // sql statement untuk insert data ke tabel "tbl_cabang"
-            $insert = mysqli_query($mysqli, "INSERT INTO tbl_cabang(nama_cabang, alamat, nama_fm, nomor_telepon, email) 
-                                            VALUES('$nama_cabang', '$alamat', '$nama_fm', '$nomor_telepon', '$email')")
+            $insert = mysqli_query($mysqli, "INSERT INTO tbl_cabang(kode_cabang, nama_cabang, alamat, nama_fm, nomor_telepon, email) 
+                                            VALUES('$kode_cabang', '$nama_cabang', '$alamat', '$nama_fm', '$nomor_telepon', '$email')")
                 or die('Ada kesalahan pada query insert : ' . mysqli_error($mysqli));
             // cek query
             // jika proses insert berhasil

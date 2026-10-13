@@ -24,9 +24,15 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
                 <div class="card-title">Entri Data Cabang</div>
             </div>
             <form action="modules/cabang/proses_entri_cabang.php" method="post" class="needs-validation" novalidate>
-                <div class="card-body">
                     <div class="form-group">
-                        <label>Cabang <span class="text-danger">*</span></label>
+                        <label>Kode Lokasi Area <span class="text-danger">*</span></label>
+                        <input type="text" name="kode_cabang" class="form-control col-lg-3 text-uppercase" placeholder="Contoh: JKT, BDG, SBY" autocomplete="off" required>
+                        <small class="form-text text-muted">Kode lokasi ini nantinya menjadi awalan (prefix) penomoran rak.</small>
+                        <div class="invalid-feedback">Kode Lokasi Area tidak boleh kosong.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nama Lokasi Area / Cabang <span class="text-danger">*</span></label>
                         <input type="text" name="nama_cabang" class="form-control col-lg-5" autocomplete="off" required>
                         <div class="invalid-feedback">Cabang tidak boleh kosong.</div>
                     </div>

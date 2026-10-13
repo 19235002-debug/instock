@@ -16,6 +16,7 @@ protectProcessScript(['Super Admin', 'Administrator'], 'cabang');
     if (isset($_POST['simpan'])) {
         // Ambil data hasil submit dari form
         $id_cabang = mysqli_real_escape_string($mysqli, $_POST['id_cabang']);
+        $kode_cabang = strtoupper(mysqli_real_escape_string($mysqli, trim($_POST['kode_cabang'] ?? '')));
         $nama_cabang = mysqli_real_escape_string($mysqli, trim($_POST['nama_cabang']));
         $alamat = mysqli_real_escape_string($mysqli, trim($_POST['alamat'] ?? ''));
         $nama_fm = mysqli_real_escape_string($mysqli, trim($_POST['nama_fm']));
@@ -39,7 +40,7 @@ protectProcessScript(['Super Admin', 'Administrator'], 'cabang');
         else {
             // SQL statement untuk update data di tabel "tbl_cabang" berdasarkan "id_cabang"
             $update = mysqli_query($mysqli, "UPDATE tbl_cabang
-                                       SET nama_cabang='$nama_cabang', alamat='$alamat', nama_fm='$nama_fm', nomor_telepon='$nomor_telepon', email='$email'
+                                       SET kode_cabang='$kode_cabang', nama_cabang='$nama_cabang', alamat='$alamat', nama_fm='$nama_fm', nomor_telepon='$nomor_telepon', email='$email'
                                        WHERE id_cabang='$id_cabang'")
                 or die('Ada kesalahan pada query update : ' . mysqli_error($mysqli));
             // Cek query

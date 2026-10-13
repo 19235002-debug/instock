@@ -22,7 +22,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
   if ($hak_akses == 'Super Admin' || $hak_akses == 'Administrator') {
     $isMasterActive = isMenuActive('barang') || isMenuActive('jenis') || isMenuActive('satuan') || isMenuActive('location') || isMenuActive('lokasi_sto') || isMenuActive('cabang');
     $isLogistikActive = isMenuActive('transfer_stok') || isMenuActive('raja_ongkir') || isMenuActive('biteship_tracking');
-    $isTransaksiActive = isMenuActive('barang_masuk') || isMenuActive('barang_keluar') || isMenuActive('adjustment') || isMenuActive('approval');
+    $isTransaksiActive = isMenuActive('barang_masuk') || isMenuActive('barang_keluar') || isMenuActive('adjustment');
     $isLaporanActive = isMenuActive('laporan_stok') || isMenuActive('laporan_barang_masuk') || isMenuActive('laporan_barang_keluar');
     $isPengaturanActive = isMenuActive('pengaturan') || isMenuActive('user') || isMenuActive('permission') || isMenuActive('audit_log');
 ?>
@@ -43,7 +43,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
     <!-- Dropdown Master Data & Lokasi -->
     <li class="nav-item <?= $isMasterActive ? 'active' : '' ?>">
-      <a data-toggle="collapse" href="#menuMasterAdmin" aria-expanded="<?= $isMasterActive ? 'true' : 'false' ?>">
+      <a data-toggle="collapse" href="#menuMasterAdmin" aria-expanded="<?= $isMasterActive ? 'true' : 'false' ?>" class="<?= $isMasterActive ? '' : 'collapsed' ?>">
         <i class="fas fa-cubes"></i>
         <p>Master Data & Lokasi</p>
         <span class="caret"></span>
@@ -86,7 +86,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
     <!-- Dropdown Logistik & Pengiriman -->
     <li class="nav-item <?= $isLogistikActive ? 'active' : '' ?>">
-      <a data-toggle="collapse" href="#menuLogistikAdmin" aria-expanded="<?= $isLogistikActive ? 'true' : 'false' ?>">
+      <a data-toggle="collapse" href="#menuLogistikAdmin" aria-expanded="<?= $isLogistikActive ? 'true' : 'false' ?>" class="<?= $isLogistikActive ? '' : 'collapsed' ?>">
         <i class="fas fa-truck-loading"></i>
         <p>Logistik & Pengiriman</p>
         <span class="caret"></span>
@@ -114,7 +114,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
     <!-- Dropdown Transaksi -->
     <li class="nav-item <?= $isTransaksiActive ? 'active' : '' ?>">
-      <a data-toggle="collapse" href="#menuTransaksiAdmin" aria-expanded="<?= $isTransaksiActive ? 'true' : 'false' ?>">
+      <a data-toggle="collapse" href="#menuTransaksiAdmin" aria-expanded="<?= $isTransaksiActive ? 'true' : 'false' ?>" class="<?= $isTransaksiActive ? '' : 'collapsed' ?>">
         <i class="fas fa-receipt"></i>
         <p>Transaksi Inventaris</p>
         <span class="caret"></span>
@@ -136,11 +136,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
               <span class="sub-item"><i class="fas fa-sliders-h mr-2"></i>Adjustment Stok</span>
             </a>
           </li>
-          <li class="<?= isMenuActive('approval') ? 'active' : '' ?>">
-            <a href="?module=approval">
-              <span class="sub-item"><i class="fas fa-check-double text-success mr-2"></i>Persetujuan (Approval)</span>
-            </a>
-          </li>
+
         </ul>
       </div>
     </li>
@@ -153,7 +149,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
     <!-- Dropdown Laporan -->
     <li class="nav-item <?= $isLaporanActive ? 'active' : '' ?>">
-      <a data-toggle="collapse" href="#menuLaporanAdmin" aria-expanded="<?= $isLaporanActive ? 'true' : 'false' ?>">
+      <a data-toggle="collapse" href="#menuLaporanAdmin" aria-expanded="<?= $isLaporanActive ? 'true' : 'false' ?>" class="<?= $isLaporanActive ? '' : 'collapsed' ?>">
         <i class="fas fa-chart-bar"></i>
         <p>Laporan & Analytics</p>
         <span class="caret"></span>
@@ -181,7 +177,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
     <!-- Dropdown Pengaturan & Keamanan -->
     <li class="nav-item <?= $isPengaturanActive ? 'active' : '' ?>">
-      <a data-toggle="collapse" href="#menuPengaturanAdmin" aria-expanded="<?= $isPengaturanActive ? 'true' : 'false' ?>">
+      <a data-toggle="collapse" href="#menuPengaturanAdmin" aria-expanded="<?= $isPengaturanActive ? 'true' : 'false' ?>" class="<?= $isPengaturanActive ? '' : 'collapsed' ?>">
         <i class="fas fa-cogs"></i>
         <p>Pengaturan & Sistem</p>
         <span class="caret"></span>
@@ -228,8 +224,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
     $isTransaksiKG = (isModuleAllowed($hak_akses, 'barang_masuk', $mysqli) && isMenuActive('barang_masuk')) ||
       (isModuleAllowed($hak_akses, 'barang_keluar', $mysqli) && isMenuActive('barang_keluar')) ||
-      (isModuleAllowed($hak_akses, 'adjustment', $mysqli) && isMenuActive('adjustment')) ||
-      isMenuActive('approval');
+      (isModuleAllowed($hak_akses, 'adjustment', $mysqli) && isMenuActive('adjustment'));
 
     $isLaporanKG = (isModuleAllowed($hak_akses, 'laporan_stok', $mysqli) && isMenuActive('laporan_stok')) ||
       (isModuleAllowed($hak_akses, 'laporan_barang_masuk', $mysqli) && isMenuActive('laporan_barang_masuk')) ||
@@ -250,7 +245,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
     <!-- Master Data KG -->
     <li class="nav-item <?= $isMasterKG ? 'active' : '' ?>">
-      <a data-toggle="collapse" href="#menuMasterKG" aria-expanded="<?= $isMasterKG ? 'true' : 'false' ?>">
+      <a data-toggle="collapse" href="#menuMasterKG" aria-expanded="<?= $isMasterKG ? 'true' : 'false' ?>" class="<?= $isMasterKG ? '' : 'collapsed' ?>">
         <i class="fas fa-cubes"></i>
         <p>Master Data & Lokasi</p>
         <span class="caret"></span>
@@ -278,16 +273,14 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
     <!-- Transaksi & Approval KG -->
     <li class="nav-item <?= $isTransaksiKG ? 'active' : '' ?>">
-      <a data-toggle="collapse" href="#menuTransaksiKG" aria-expanded="<?= $isTransaksiKG ? 'true' : 'false' ?>">
+      <a data-toggle="collapse" href="#menuTransaksiKG" aria-expanded="<?= $isTransaksiKG ? 'true' : 'false' ?>" class="<?= $isTransaksiKG ? '' : 'collapsed' ?>">
         <i class="fas fa-receipt"></i>
         <p>Transaksi & Persetujuan</p>
         <span class="caret"></span>
       </a>
       <div class="collapse <?= $isTransaksiKG ? 'show' : '' ?>" id="menuTransaksiKG">
         <ul class="nav nav-collapse">
-          <li class="<?= isMenuActive('approval') ? 'active' : '' ?>">
-            <a href="?module=approval"><span class="sub-item"><i class="fas fa-check-double text-success mr-2"></i>Persetujuan (Approval)</span></a>
-          </li>
+
           <?php if (isModuleAllowed($hak_akses, 'barang_masuk', $mysqli)): ?>
             <li class="<?= isMenuActive('barang_masuk') ? 'active' : '' ?>"><a href="?module=barang_masuk"><span class="sub-item"><i class="fas fa-sign-in-alt mr-2"></i>Barang Masuk</span></a></li>
           <?php endif; ?>
@@ -303,7 +296,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
     <!-- Laporan & User KG -->
     <li class="nav-item <?= $isLaporanKG ? 'active' : '' ?>">
-      <a data-toggle="collapse" href="#menuLaporanKG" aria-expanded="<?= $isLaporanKG ? 'true' : 'false' ?>">
+      <a data-toggle="collapse" href="#menuLaporanKG" aria-expanded="<?= $isLaporanKG ? 'true' : 'false' ?>" class="<?= $isLaporanKG ? '' : 'collapsed' ?>">
         <i class="fas fa-chart-bar"></i>
         <p>Laporan Gudang</p>
         <span class="caret"></span>
@@ -362,7 +355,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
     <!-- Master Data AG -->
     <li class="nav-item <?= $isMasterAG ? 'active' : '' ?>">
-      <a data-toggle="collapse" href="#menuMasterAG" aria-expanded="<?= $isMasterAG ? 'true' : 'false' ?>">
+      <a data-toggle="collapse" href="#menuMasterAG" aria-expanded="<?= $isMasterAG ? 'true' : 'false' ?>" class="<?= $isMasterAG ? '' : 'collapsed' ?>">
         <i class="fas fa-cubes"></i>
         <p>Master Data & Rak</p>
         <span class="caret"></span>
@@ -390,7 +383,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
     <!-- Transaksi AG -->
     <li class="nav-item <?= $isTransaksiAG ? 'active' : '' ?>">
-      <a data-toggle="collapse" href="#menuTransaksiAG" aria-expanded="<?= $isTransaksiAG ? 'true' : 'false' ?>">
+      <a data-toggle="collapse" href="#menuTransaksiAG" aria-expanded="<?= $isTransaksiAG ? 'true' : 'false' ?>" class="<?= $isTransaksiAG ? '' : 'collapsed' ?>">
         <i class="fas fa-receipt"></i>
         <p>Transaksi Lapangan</p>
         <span class="caret"></span>
@@ -409,7 +402,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
     <!-- Laporan AG -->
     <li class="nav-item <?= $isLaporanAG ? 'active' : '' ?>">
-      <a data-toggle="collapse" href="#menuLaporanAG" aria-expanded="<?= $isLaporanAG ? 'true' : 'false' ?>">
+      <a data-toggle="collapse" href="#menuLaporanAG" aria-expanded="<?= $isLaporanAG ? 'true' : 'false' ?>" class="<?= $isLaporanAG ? '' : 'collapsed' ?>">
         <i class="fas fa-chart-bar"></i>
         <p>Laporan Operasional</p>
         <span class="caret"></span>
@@ -450,7 +443,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
     <!-- Menu Suplai Supplier -->
     <li class="nav-item <?= $isMasterSup ? 'active' : '' ?>">
-      <a data-toggle="collapse" href="#menuSupplier" aria-expanded="<?= $isMasterSup ? 'true' : 'false' ?>">
+      <a data-toggle="collapse" href="#menuSupplier" aria-expanded="<?= $isMasterSup ? 'true' : 'false' ?>" class="<?= $isMasterSup ? '' : 'collapsed' ?>">
         <i class="fas fa-truck"></i>
         <p>Katalog & Pengiriman</p>
         <span class="caret"></span>
@@ -469,9 +462,9 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
     <!-- Laporan Supplier -->
     <li class="nav-item <?= $isLaporanSup ? 'active' : '' ?>">
-      <a data-toggle="collapse" href="#menuLaporanSup" aria-expanded="<?= $isLaporanSup ? 'true' : 'false' ?>">
+      <a data-toggle="collapse" href="#menuLaporanSup" aria-expanded="<?= $isLaporanSup ? 'true' : 'false' ?>" class="<?= $isLaporanSup ? '' : 'collapsed' ?>">
         <i class="fas fa-chart-bar"></i>
-        <p>Laporan Suplai</p>
+        <p>Laporan Supplier</p>
         <span class="caret"></span>
       </a>
       <div class="collapse <?= $isLaporanSup ? 'show' : '' ?>" id="menuLaporanSup">

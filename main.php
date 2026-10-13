@@ -185,18 +185,7 @@ if (empty($_SESSION['username']) && empty($_SESSION['password'])) {
                                 </li>
                             <?php endif; ?>
 
-                            <!-- Pending Approval Alert -->
-                            <?php if ($sess_hak_akses == 'Super Admin' || $sess_hak_akses == 'Administrator' || $sess_hak_akses == 'Kepala Gudang'): ?>
-                                <li class="nav-item dropdown hidden-caret mr-2">
-                                    <a class="nav-link dropdown-toggle" href="?module=approval"
-                                        title="Persetujuan Transaksi Pending">
-                                        <i class="fas fa-check-double text-white" style="font-size: 1.2rem;"></i>
-                                        <?php if ($cnt_pending > 0): ?>
-                                            <span class="notification badge badge-success"><?= $cnt_pending ?></span>
-                                        <?php endif; ?>
-                                    </a>
-                                </li>
-                            <?php endif; ?>
+
 
                             <!-- Low Stock Alert Dropdown -->
                             <li class="nav-item dropdown hidden-caret mr-3">
@@ -375,10 +364,6 @@ if (empty($_SESSION['username']) && empty($_SESSION['password'])) {
             </div>
         </div>
 
-        <!-- Core JS Files -->
-        <script src="assets/js/core/popper.min.js"></script>
-        <script src="assets/js/core/bootstrap.min.js"></script>
-
         <!-- jQuery UI -->
         <script src="assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
         <script src="assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
@@ -389,8 +374,6 @@ if (empty($_SESSION['username']) && empty($_SESSION['password'])) {
         <script src="assets/js/plugin/datatables/datatables.min.js"></script>
         <!-- Datepicker JS -->
         <script src="assets/js/plugin/datepicker/js/bootstrap-datepicker.min.js"></script>
-        <!-- Chosen JS -->
-        <script src="assets/js/plugin/chosen/js/chosen.jquery.js"></script>
 
         <!-- Atlantis JS -->
         <script src="assets/js/atlantis.min.js"></script>

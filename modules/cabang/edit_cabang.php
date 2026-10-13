@@ -44,11 +44,17 @@ else {
             </div>
             <!-- form ubah data -->
             <form action="modules/cabang/proses_edit_cabang.php" method="post" class="needs-validation" novalidate>
-                <div class="card-body">
                     <input type="hidden" name="id_cabang" value="<?php echo $data['id_cabang']; ?>">
 
                     <div class="form-group">
-                        <label>Cabang <span class="text-danger">*</span></label>
+                        <label>Kode Lokasi Area <span class="text-danger">*</span></label>
+                        <input type="text" name="kode_cabang" class="form-control col-lg-3 text-uppercase" autocomplete="off" value="<?php echo htmlspecialchars($data['kode_cabang'] ?? ''); ?>" required>
+                        <small class="form-text text-muted">Kode lokasi ini nantinya menjadi awalan (prefix) penomoran rak.</small>
+                        <div class="invalid-feedback">Kode Lokasi Area tidak boleh kosong.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nama Lokasi Area / Cabang <span class="text-danger">*</span></label>
                         <input type="text" name="nama_cabang" class="form-control col-lg-5" autocomplete="off" value="<?php echo htmlspecialchars($data['nama_cabang'] ?? ''); ?>" required>
                         <div class="invalid-feedback">Cabang tidak boleh kosong.</div>
                     </div>

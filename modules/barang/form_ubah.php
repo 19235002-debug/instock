@@ -190,7 +190,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
                           }
                         }
 
-                        $query_rak = mysqli_query($mysqli, "SELECT id, no_rak FROM location ORDER BY CAST(SUBSTRING(no_rak, 3) AS UNSIGNED) ASC, no_rak ASC");
+                        $query_rak = mysqli_query($mysqli, "SELECT id, no_rak FROM location ORDER BY no_rak ASC");
                         while ($data_rak = mysqli_fetch_assoc($query_rak)) {
                           $selected = ($data['rak_id'] == $data_rak['id']) ? 'selected' : '';
                           $is_used = in_array($data_rak['id'], $occupied_raks);

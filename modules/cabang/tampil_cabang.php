@@ -65,6 +65,7 @@ if (isset($_GET['pesan'])) {
                     <thead>
                         <tr>
                             <th class="text-center">No.</th>
+                            <th class="text-center">Kode Lokasi</th>
                             <th class="text-center">Lokasi Area</th>
                             <th class="text-center">Nama PIC/Owner</th>
                             <th class="text-center">Alamat Lengkap</th>
@@ -81,6 +82,7 @@ if (isset($_GET['pesan'])) {
                         ?>
                             <tr>
                                 <td class="text-center"><?php echo $no++; ?></td>
+                                <td class="text-center font-weight-bold"><span class="badge badge-primary px-2 py-1"><?php echo htmlspecialchars($data['kode_cabang'] ?: '-'); ?></span></td>
                                 <td class="font-weight-bold text-nowrap"><?php echo htmlspecialchars($data['nama_cabang']); ?></td>
                                 <td><?php echo htmlspecialchars($data['nama_fm'] ?: '-'); ?></td>
                                 <td><?php echo htmlspecialchars($data['alamat'] ?: '-'); ?></td>

@@ -186,7 +186,7 @@ if (!$data) {
             <td class="text-center align-middle">
               <?= !empty($row['expired_date']) ? date('d-m-Y', strtotime($row['expired_date'])) : '-' ?>
             </td>
-            <td class="text-center align-middle"><?= htmlspecialchars($row['no_rak'] ?: 'A-001') ?></td>
+            <td class="text-center align-middle"><?= htmlspecialchars($row['no_rak'] ?: 'JKT-01-01-A') ?></td>
           </tr>
         <?php } ?>
       </tbody>
